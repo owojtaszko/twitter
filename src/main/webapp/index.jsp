@@ -13,11 +13,10 @@
 <%--Odnośnik do całej sekcji <head></head> w pliku meta--%>
 
 <body>
-
+<jsp:include page="include/header.jsp"/>
 <main role="main">
     <!-- Main jumbotron for a primary marketing message or call to action -->
 
-    <jsp:include page="include/header.jsp"/>
 
     <div class="container">
         <!-- Example row of columns -->

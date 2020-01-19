@@ -14,7 +14,7 @@
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
     <title>Twitter Strona Główna</title>
     <!-- Bootstrap core CSS -->
-    <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/style/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <%--    <link href="jumbotron.css" rel="stylesheet">--%>
 </head>
