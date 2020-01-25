@@ -1,14 +1,21 @@
 package com.sda.twetter.servlet;
 
+import com.sda.twetter.exception.ImproperLoginCredentials;
+import com.sda.twetter.persistance.entities.TbUser;
+import com.sda.twetter.service.UserService;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
 @WebServlet(urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
+
+    private UserService userService = new UserService();
 
 //    @Override
 //    public void doGet(HttpServletRequest request
@@ -24,11 +31,16 @@ public class LoginServlet extends HttpServlet {
     ) throws IOException {
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
-        if (userName.equals("admin") && password.equals("password")) {
-            response.sendRedirect("/");
-        } else {
-            response.sendRedirect("login");
+        try {
+            TbUser tbUser = userService.getUserByUserName(userName, password);
+            HttpSession session = request.getSession();
+            session.setAttribute("currentUser", tbUser);
+            response.sendRedirect("login.jsp");
+        } catch (ImproperLoginCredentials improperLoginCredentials) {
+            improperLoginCredentials.printStackTrace();
+            response.sendRedirect("login.jsp");
         }
+
     }
 
 }
