@@ -18,6 +18,7 @@
 <body>
 <jsp:include page="include/header.jsp"/>
 <main role="main" ng-app="articleApp">
+
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <%--    <%--%>
     <%--        final List<TbArticle> articles = articleService.getArticles();--%>
@@ -26,7 +27,7 @@
 
     <div class="container">
         <div ng-controller="articleController" ng-init="init()">
-
+            <h2>{{weather.main.temp}}&deg;C</h2>
             <div ng-repeat="article in articles">
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-5">
